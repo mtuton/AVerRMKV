@@ -1,4 +1,14 @@
-﻿using System;
+﻿
+// Do we record if a navigation button has been pressed
+//   we don't do anything with this, so for now just ignore related code for now
+//#define NAVIGATION_KEYS
+
+// Do we know when the same button has been pressed multiple times in a row
+//   we don't do anything with this information, so just ignore related code for now
+//#define DUPLICATE_KEYS
+
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
@@ -8,13 +18,12 @@ using MediaPortal.Configuration;
 using REMOTESERVICELib;
 using System.IO;
 
-
 namespace AVerRMKV
 {
     /// <summary>
     /// AVerMedia AVerRemote RM-KV remote control plugiin (with service AverRemote.exe 1.0.1.4)
     /// </summary>
-    [PluginIcons("AverRMKV.iconoon.jpg", "AverRMKV.iconooff.jpg")]
+    [PluginIcons("AVerRMKV.iconoon.png", "AVerRMKV.iconooff.png")]
     public class AVerRemote : ISetupForm, IPlugin
     {
         #region Class Variables
@@ -26,7 +35,9 @@ namespace AVerRMKV
         private DateTime    lastTimeActionPerformed;                    // records the time an action was performed
         private DateTime    lastTimeButtonPushed;                       // records the time a button was pushed
         private uint        lastnKeyFunPressed      = 0x00000000;
+        #if DUPLICATE_KEYS
         private int         sameButtonPushedCount   = 0;                // tracks the number of times the same button was pushed in a row
+        #endif // DUPLICATE_KEYS
 
         #endregion // Class Variables
 
@@ -61,6 +72,7 @@ namespace AVerRMKV
                 timeSinceActionTaken = now - lastTimeActionPerformed;
                 timeSinceActionTakenInMS = timeSinceActionTaken.TotalMilliseconds;
 
+                #if DUPLICATE_KEYS
                 // increase the counter for the number of times the same key has been pressed
                 //if (nKeyFun == lastnKeyFunPressed && (totalKeyPressedTimeSpan == 0 || keyPressedTimeSpan == 156 || totalKeyPressedTimeSpan == 187.5 || totalKeyPressedTimeSpan == 203.125)) // keyPressedTimeSpan == 140 
                 if (nKeyFun == lastnKeyFunPressed)
@@ -71,7 +83,9 @@ namespace AVerRMKV
                 {
                     sameButtonPushedCount = 0;
                 }
+                #endif
 
+                #if NAVIGATION_KEYS
                 // nKeyFun.ToString() - codes for keys
                 // up       = 15
                 // down     = 16
@@ -87,15 +101,20 @@ namespace AVerRMKV
                     nKeyFun == 29 ||
                     nKeyFun == 30
                 );
+                #endif // NAVIGATION_KEYS
 
                 // log some useful internal information - for debugging purposes
                 Log.Debug("AverRMKV: " +
+                    #if DUPLICATE_KEYS
                     "button pressed count: " + sameButtonPushedCount + ": " +
+                    #endif
                     "time since action taken: " + timeSinceButtonPushedInMS + "ms, " +
                     "time since button pushed: " + timeSinceActionTakenInMS + "ms, " +
-                    "Data Received: " +
-                    nKey.ToString() + " " + nKeyFun.ToString() + " " + navigationKeyPressed
-                    );
+                    "Data Received: " + nKey.ToString() + " " + nKeyFun.ToString() 
+                    #if NAVIGATION_KEYS
+                    + " " + navigationKeyPressed
+                    #endif // NAVIGATION_KEYS
+                );
 
                 // perform the action 
                 // if (now - last_time_action_performed) > timeout_period, then perform action

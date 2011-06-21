@@ -46,8 +46,8 @@
     <Reference Include="Utils, Version=2.2.7.29247, Culture=neutral, processorArchitecture=x86" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="iconooff.jpg" />
-    <Content Include="iconoon.jpg" />
+    <EmbeddedResource Include="iconooff.png" />
+    <EmbeddedResource Include="iconoon.png" />
     <Content Include="InputDeviceMappings\default\AVerRMKV.xml" />
     <Content Include="plugins\process\REMOTESERVICELib.dll" />
   </ItemGroup>
