@@ -89,7 +89,7 @@ namespace AVerRMKV
                 );
 
                 // log some useful internal information - for debugging purposes
-                Log.Debug("AverRMHV: " +
+                Log.Debug("AverRMKV: " +
                     "button pressed count: " + sameButtonPushedCount + ": " +
                     "time since action taken: " + timeSinceButtonPushedInMS + "ms, " +
                     "time since button pushed: " + timeSinceActionTakenInMS + "ms, " +
@@ -101,13 +101,13 @@ namespace AVerRMKV
                 // if (now - last_time_action_performed) > timeout_period, then perform action
                 if (timeSinceActionTakenInMS > (interKeyDelay + 10))
                 {
-                    Log.Debug("AverRMHV:   KEY ACTIONED: " + nKeyFun.ToString());
+                    Log.Debug("AverRMKV:   KEY ACTIONED: " + nKeyFun.ToString());
                     inputhandler.MapAction((int)nKeyFun);
                     lastTimeActionPerformed = DateTime.Now;
                 }
                 else
                 {
-                    Log.Debug("AverRMHV:   KEY IGNORED: " + nKeyFun.ToString());
+                    Log.Debug("AverRMKV:   KEY IGNORED: " + nKeyFun.ToString());
                 }
                 lastTimeButtonPushed = DateTime.Now;
                 lastnKeyFunPressed = nKeyFun;

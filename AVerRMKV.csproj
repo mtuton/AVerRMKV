@@ -49,6 +49,10 @@
     <Content Include="iconooff.jpg" />
     <Content Include="iconoon.jpg" />
     <Content Include="InputDeviceMappings\default\AVerRMKV.xml" />
+    <Content Include="plugins\process\REMOTESERVICELib.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
