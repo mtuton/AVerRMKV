@@ -35,6 +35,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Common.Utils, Version=1.2.0.0, Culture=neutral, processorArchitecture=x86" />
     <Reference Include="Core, Version=1.1.3.29252, Culture=neutral, processorArchitecture=x86" />
     <Reference Include="Dialogs, Version=1.1.3.29258, Culture=neutral, processorArchitecture=x86" />
     <Reference Include="RemotePlugins, Version=1.1.3.29258, Culture=neutral, processorArchitecture=x86" />
@@ -48,7 +49,7 @@
   <ItemGroup>
     <EmbeddedResource Include="iconooff.png" />
     <EmbeddedResource Include="iconoon.png" />
-    <Content Include="InputDeviceMappings\default\AVerRMKV.xml" />
+    <Content Include="defaults\InputDeviceMappings\AVerRMKV.xml" />
     <Content Include="plugins\process\REMOTESERVICELib.dll" />
   </ItemGroup>
   <ItemGroup>

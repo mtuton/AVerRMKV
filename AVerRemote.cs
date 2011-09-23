@@ -12,11 +12,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
+using MediaPortal.Common.Utils;
 using MediaPortal.GUI.Library;
 using MediaPortal.InputDevices;
 using MediaPortal.Configuration;
 using REMOTESERVICELib;
 using System.IO;
+[assembly: CompatibleVersion("1.2.0.0","1.1.3.0")]
+[assembly: UsesSubsystem("MP.SkinEngine")]
+[assembly: UsesSubsystem("MP.Config")]
+[assembly: UsesSubsystem("MP.Input")]
+[assembly: UsesSubsystem("MP.Input.Mapping")]
 
 namespace AVerRMKV
 {

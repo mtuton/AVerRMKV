@@ -1,7 +1,7 @@
-AVerMedia AVerRMKV remote control plug-in for MediaPortal 1.1.3
+AVerMedia AVerRMKV remote control plug-in for MediaPortal 1.2.0
 
 Installation Instructions
 * Stop MediaPortal if it's running
-* Copy InputDefaultMappings into the "Team MediaPortal" program folder.
+* Copy defaults into the "Team MediaPortal" program folder.
 * Copy the REMOTESERVICELib.dll & AVerRMKV.dll into the MediaPortal plugins/process folder
 * Start MediaPortal
